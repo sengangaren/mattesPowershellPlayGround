@@ -10,18 +10,8 @@ function Start-Test {
 }
 
 
-    ## Remove User from group
-    # Get connection
-    $Computer = $env:COMPUTERNAME
-    $GroupName = 'TestGroup'
-    $ADSI = [ADSI]("WinNT://$Computer")
-    $Group = $ADSI.Children.Find($GroupName, 'group')
-    
-    # Remove The user
-    $User = $env:USERNAME
-    $Group.Remove(("WinNT://$computer/$user")) 
-}
 function Test-LocalUsers {
+    Get-Users
     New-LocalGroup -Name "TestGroup" 
 }
 
